@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banky - Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Banky</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Account Page Content -->
+    <main>
+        <section class="account-container">
+            <h2>Welcome, <span id="username"></span>!</h2>
+            <p>Your account is ready to explore more bank.</p>
+
+            <div id="userDetails">
+                <!-- User Details will present here... -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Banky. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const token = localStorage.getItem('token'); // Get the token from localStorage
+            const usernameSpan = document.getElementById('username');
+            const userDetailsDiv = document.getElementById('userDetails');
+
+            // If user is not logged in, redirect to login page
+            if (!token) {
+                alert("You must be logged in to view your account details.");
+                window.location.href = "login.html"; // Redirect to login page
+                return;
+            }
+
+            // Fetch user data using the token
+            try {
+                const response = await fetch('/account', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': token // Send the token in the header
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+
+                const userData = await response.json();
+                usernameSpan.textContent = userData.username; // Display the username
+
+                // Display user-specific details, if any
+                userDetailsDiv.innerHTML = `<p>Phone No.: ${userData.phone}</p><p>Account created at: ${userData.created_at}</p>`;
+
+            } catch (error) {
+                console.error(error);
+                alert('Error fetching user data. Please log in again.');
+                localStorage.removeItem('token'); // Clear token on error
+                window.location.href = "login.html"; // Redirect to login
+            }
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banky - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Banky</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="rates">
+            <div class="searchbox">
+                <input type="text" id="bankSearch" placeholder="Search for banks...">
+                <button onclick="searchBank()" id="searchButton">Search</button>
+            </div>
+            <div class="main">
+                <div class="left">
+                    <h1>Profitability <br> on the rise</h1>
+                    <br>
+                    <p>A Broker that supports your financial goals</p>
+                </div>
+                <div class="right">
+                    <img src="./Img/1.jpg" alt="" class="Img1">
+                </div>
+            </div>
+        </section>
+
+        <section id="index_about">
+            <h1>The latest from our broker</h1>
+            <p>New features, latest webinars and more...</p>
+
+            <div class="feature">
+                <div class="first">
+                    <div class="up">
+                        <img src="./Img/2.webp" alt="" class="Img2">
+                    </div>
+                    <div class="down">
+                        <img src="./Img/3.jpg" alt="" class="Img3">
+                    </div>
+                </div>
+                <div class="second">
+                    <img src="./Img/4.jpg" alt="" class="Img4">
+                </div>
+                <div class="third">
+                    <div class="up">
+                        <img src="./Img/5.webp" alt="" class="Img5">
+                    </div>
+                    <div class="down">
+                        <img src="./Img/6.webp" alt="" class="Img6">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Banky. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchBank() {
+            const searchQuery = document.getElementById('bankSearch').value;
+
+            const queryParams = new URLSearchParams({ searchQuery }).toString();
+            window.location.href = `services.html?${queryParams}`;
+        }
+    </script>
+    
+    <script src="app.js"></script>
+</body>
+</html>

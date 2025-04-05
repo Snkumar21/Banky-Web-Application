@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1, h2 {
+            color: #2b2b2b;
+            margin-bottom: 20px;
+        }
+
+        select, input {
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        select:hover, input:hover {
+            border-color: #00a3cc;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #00a3cc;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #007a99;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #result, #calculation-result {
+            margin-top: 20px;
+        }
+
+        #result h2, #calculation-result h2 {
+            margin-bottom: 10px;
+        }
+
+        #fixed-inputs, #sip-inputs {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Banky</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Investment Return Calculator</h1>
+
+        <label for="bank">Choose a Bank:</label>
+        <select id="bank">
+            <option value="" disabled selected>Select Your Bank</option>
+            <option value="Axis Bank">Axis Bank</option>
+            <option value="Allahabad Bank">Allahabad Bank</option>
+            <option value="State Bank of India (SBI)">State Bank of India (SBI)</option>
+            <option value="ICICI Bank">ICICI Bank</option>
+            <option value="Punjab National Bank (PNB)">Punjab National Bank (PNB)</option>
+            <option value="HDFC Bank">HDFC Bank</option>
+            <option value="Bandhan Bank">Bandhan Bank</option>
+            <option value="Bank of Baroda (BoB)">Bank of Baroda (BoB)</option>
+            <option value="Canara Bank">Canara Bank</option>
+        </select>
+
+        <div id="result"></div>
+
+        <p>Choose Investment Type:</p><br>
+        <label for="fixed">Fixed Investment</label>
+        <input type="radio" id="fixed" name="investmentType" value="fixed" onchange="toggleInvestmentType()" />
+
+        <label for="sip">SIP Investment</label>
+        <input type="radio" id="sip" name="investmentType" value="sip" onchange="toggleInvestmentType()" />
+
+        <div id="fixed-inputs">
+            <label for="fixedAmount">Investment Amount:</label>
+            <input type="number" id="fixedAmount" placeholder="Enter Investment Amount" />
+            <label for="fixedYears">Number of Years:</label>
+            <input type="number" id="fixedYears" placeholder="Enter Number of Years" />
+            <label for="fixedRate">Expected Return Rate (%):</label>
+            <input type="number" id="fixedRate" placeholder="Enter Expected Return Rate" />
+        </div>
+
+        <div id="sip-inputs">
+            <label for="sipAmount">Monthly Investment Amount:</label>
+            <input type="number" id="sipAmount" placeholder="Enter Monthly SIP Amount (₹500 - ₹1,00,000)" min="500" max="100000"/>
+            <label for="sipYears">Number of Years:</label>
+            <input type="number" id="sipYears" placeholder="Enter Number of Years" />
+            <label for="sipRate">Expected Return Rate (%):</label>
+            <input type="number" id="sipRate" placeholder="Enter Expected Return Rate" />
+        </div>
+        <br>
+        <button onclick="calculateReturn()">Calculate Return</button>
+
+        <div id="calculation-result"></div>
+    </div>
+
+    <script>
+        // Bank data
+        const banks = [
+            {
+                name: 'Axis Bank',
+                investmentServices: {
+                    fixedDepositRate: '5.40%',
+                    mutualFundReturn: '12.50%',
+                    annualReturn: '6.20%'
+                }
+            },
+            {
+                name: 'Allahabad Bank',
+                investmentServices: {
+                    fixedDepositRate: '5.60%',
+                    mutualFundReturn: '10.80%',
+                    annualReturn: '6.30%'
+                }
+            },
+            {
+                name: 'State Bank of India (SBI)',
+                investmentServices: {
+                    fixedDepositRate: '5.70%',
+                    mutualFundReturn: '11.25%',
+                    annualReturn: '6.45%'
+                }
+            },
+            {
+                name: 'ICICI Bank',
+                investmentServices: {
+                    fixedDepositRate: '6.00%',
+                    mutualFundReturn: '12.00%',
+                    annualReturn: '6.50%'
+                }
+            },
+            {
+                name: 'Punjab National Bank (PNB)',
+                investmentServices: {
+                    fixedDepositRate: '5.80%',
+                    mutualFundReturn: '10.75%',
+                    annualReturn: '6.40%'
+                }
+            },
+            {
+                name: 'HDFC Bank',
+                investmentServices: {
+                    fixedDepositRate: '6.10%',
+                    mutualFundReturn: '13.20%',
+                    annualReturn: '6.70%'
+                }
+            },
+            {
+                name: 'Bandhan Bank',
+                investmentServices: {
+                    fixedDepositRate: '6.30%',
+                    mutualFundReturn: '12.50%',
+                    annualReturn: '6.55%'
+                }
+            },
+            {
+                name: 'Bank of Baroda (BoB)',
+                investmentServices: {
+                    fixedDepositRate: '6.20%',
+                    mutualFundReturn: '11.75%',
+                    annualReturn: '6.60%'
+                }
+            },
+            {
+                name: 'Canara Bank',
+                investmentServices: {
+                    fixedDepositRate: '5.90%',
+                    mutualFundReturn: '10.50%',
+                    annualReturn: '6.30%'
+                }
+            }
+        ];
+
+        // Display selected bank's services
+        document.getElementById('bank').addEventListener('change', function() {
+            const selectedBank = this.value;
+            const bank = banks.find(b => b.name === selectedBank);
+
+            if (bank) {
+                document.getElementById('result').innerHTML = `
+                    <h2>Investment Services for ${bank.name}</h2>
+                    <p>Fixed Deposit Rate: ${bank.investmentServices.fixedDepositRate}</p>
+                    <p>Mutual Fund Return: ${bank.investmentServices.mutualFundReturn}</p>
+                    <p>Annual Return: ${bank.investmentServices.annualReturn}</p>
+                `;
+            } else {
+                document.getElementById('result').innerHTML = '';
+            }
+
+            document.getElementById('calculation-result').innerHTML = '';
+        });
+
+        function toggleInvestmentType() {
+            const investmentType = document.querySelector('input[name="investmentType"]:checked').value;
+            document.getElementById('fixed-inputs').style.display = investmentType === 'fixed' ? 'block' : 'none';
+            document.getElementById('sip-inputs').style.display = investmentType === 'sip' ? 'block' : 'none';
+
+            // Clear previous calculation result
+            document.getElementById('calculation-result').innerHTML = '';
+        }
+
+        // Calculate investment return
+        function calculateReturn() {
+            const investmentType = document.querySelector('input[name="investmentType"]:checked').value;
+
+            if (investmentType === 'fixed') {
+                const amount = parseFloat(document.getElementById('fixedAmount').value);
+                const years = parseInt(document.getElementById('fixedYears').value);
+                const rate = parseFloat(document.getElementById('fixedRate').value);
+
+                if (isNaN(amount) || isNaN(years) || isNaN(rate) || amount <= 0 || years <= 0 || rate <= 0) {
+                    alert('Please enter valid values for amount, years, and rate.');
+                    return;
+                }
+
+                const compoundInterest = amount * Math.pow((1 + rate / 100), years);
+                document.getElementById('calculation-result').innerHTML = `
+                    <h2>Fixed Investment Return</h2>
+                    <p>Initial Amount: ₹${amount.toFixed(2)}</p>
+                    <p>Rate of Interest: ${rate.toFixed(2)}%</p>
+                    <p>Years: ${years}</p>
+                    <p>Total Return: ₹${compoundInterest.toFixed(2)}</p>
+                `;
+            } else if (investmentType === 'sip') {
+                const sipAmount = parseFloat(document.getElementById('sipAmount').value);
+                const sipYears = parseInt(document.getElementById('sipYears').value);
+                const sipRate = parseFloat(document.getElementById('sipRate').value);
+
+                if (isNaN(sipAmount) || isNaN(sipYears) || isNaN(sipRate) || sipAmount <= 0 || sipYears <= 0 || sipRate <= 0) {
+                    alert('Please enter valid values for SIP amount, years, and rate.');
+                    return;
+                }
+
+                const n = sipYears * 12; // total number of SIPs
+                const r = sipRate / (12 * 100); // monthly rate
+                const sipTotal = sipAmount * (((Math.pow(1 + r, n) - 1) / r) * (1 + r));
+                document.getElementById('calculation-result').innerHTML = `
+                    <h2>SIP Investment Return</h2>
+                    <p>Monthly Investment: ₹${sipAmount.toFixed(2)}</p>
+                    <p>Rate of Interest: ${sipRate.toFixed(2)}%</p>
+                    <p>Years: ${sipYears}</p>
+                    <p>Total Return: ₹${sipTotal.toFixed(2)}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

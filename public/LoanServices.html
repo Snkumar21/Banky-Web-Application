@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .calculator-container, .bank-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .calculator-container input, .calculator-container select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+        .calculator-container button {
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .calculator-container button:hover {
+            background-color: #0056b3;
+        }
+        .bank-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .bank-list li {
+            background-color: #e9ecef;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .result {
+            background-color: #d1e7dd;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Banky</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Loan Calculator & Bank Loan Services</h1>
+
+    <!-- Loan Calculator -->
+    <div class="calculator-container">
+        <h2>Loan EMI Calculator</h2>
+        <label for="loanAmount">Loan Amount (₹):</label>
+        <input type="number" id="loanAmount" placeholder="Enter loan amount" required>
+
+        <label for="interestRate">Interest Rate (%):</label>
+        <input type="number" id="interestRate" placeholder="Enter interest rate" step="0.01" required>
+
+        <label for="loanTenure">Loan Tenure (Years):</label>
+        <input type="number" id="loanTenure" placeholder="Enter loan tenure" required>
+
+        <button onclick="calculateEMI()">Calculate EMI</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <!-- Bank Loan Services -->
+    <div class="bank-container">
+        <h2>Bank Loan Services</h2>
+        <ul class="bank-list" id="bankList">
+            <!-- Loan services will be displayed here -->
+        </ul>
+    </div>
+
+    <script>
+        // Bank data with loan services
+        const banks = 
+        [
+            {
+                name: 'Axis Bank',
+                loanServices: {
+                    homeLoanRate: '6.90%',
+                    personalLoanRate: '10.50%',
+                    carLoanRate: '8.50%'
+                }
+            },
+            {
+                name: 'Allahabad Bank',
+                loanServices: {
+                    homeLoanRate: '7.05%',
+                    personalLoanRate: '11.25%',
+                    carLoanRate: '9.25%'
+                }
+            },
+            {
+                name: 'State Bank of India (SBI)',
+                loanServices: {
+                    homeLoanRate: '7.10%',
+                    personalLoanRate: '11.35%',
+                    carLoanRate: '9.00%'
+                }
+            },
+            {
+                name: 'ICICI Bank',
+                loanServices: {
+                    homeLoanRate: '7.20%',
+                    personalLoanRate: '10.75%',
+                    carLoanRate: '8.90%'
+                }
+            },
+            {
+                name: 'Punjab National Bank (PNB)',
+                loanServices: {
+                    homeLoanRate: '7.15%',
+                    personalLoanRate: '11.15%',
+                    carLoanRate: '9.00%'
+                }
+            },
+            {
+                name: 'HDFC Bank',
+                loanServices: {
+                    homeLoanRate: '7.25%',
+                    personalLoanRate: '11.00%',
+                    carLoanRate: '9.25%'
+                }
+            },
+            {
+                name: 'Bandhan Bank',
+                loanServices: {
+                    homeLoanRate: '7.30%',
+                    personalLoanRate: '11.50%',
+                    carLoanRate: '9.10%'
+                }
+            },
+            {
+                name: 'Bank of Baroda (BoB)',
+                loanServices: {
+                    homeLoanRate: '7.40%',
+                    personalLoanRate: '11.25%',
+                    carLoanRate: '9.10%'
+                }
+            },
+            {
+                name: 'Canara Bank',
+                loanServices: {
+                    homeLoanRate: '7.20%',
+                    personalLoanRate: '10.90%',
+                    carLoanRate: '8.80%'
+                }
+            }
+            // Add more banks here...
+        ];
+
+
+        // Display loan services for all banks
+        const bankList = document.getElementById('bankList');
+        banks.forEach(bank => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <strong>${bank.name}</strong><br>
+                Home Loan Rate: ${bank.loanServices.homeLoanRate}<br>
+                Personal Loan Rate: ${bank.loanServices.personalLoanRate}<br>
+                Car Loan Rate: ${bank.loanServices.carLoanRate}
+            `;
+            bankList.appendChild(li);
+        });
+
+        // Loan EMI Calculator function
+        function calculateEMI() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const interestRate = parseFloat(document.getElementById('interestRate').value);
+            const loanTenure = parseInt(document.getElementById('loanTenure').value);
+
+            // Convert annual interest rate to monthly and tenure to months
+            const monthlyRate = interestRate / (12 * 100);
+            const numberOfMonths = loanTenure * 12;
+
+            // EMI Calculation Formula
+            const emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfMonths)) /
+                        (Math.pow(1 + monthlyRate, numberOfMonths) - 1);
+
+            // Display EMI result
+            const resultDiv = document.getElementById('result');
+            if (isNaN(emi)) {
+                resultDiv.innerHTML = "Please fill out all fields correctly.";
+            } else {
+                resultDiv.innerHTML = `Estimated EMI: ₹${emi.toFixed(2)}`;
+            }
+        }
+    </script>
+
+</body>
+</html>

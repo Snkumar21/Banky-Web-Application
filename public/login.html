@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banky - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Banky</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Login Form Section -->
+    <main>
+        <section class="login-container">
+            <h2>Login to Your Account</h2>
+            <form action="dashboard.html" method="POST" id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="btn-login">Login</button>
+                </div>
+            </form>
+
+            <p>or</p>
+
+            <div class="google-login">
+                <button class="btn-google">Login with Google</button>
+            </div>
+
+            <p class="signup-text">Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Banky. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = e.target.username.value;
+            const password = e.target.password.value;
+        
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+        
+            const result = await response.json();
+            if (response.ok) {
+                localStorage.setItem('token', result.token);
+                alert(result.message);
+                window.location.href = 'account.html';
+            } else {
+                alert(result.message);
+            }
+        });
+        </script>
+
+</body>
+</html>

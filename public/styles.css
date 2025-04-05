@@ -1,0 +1,765 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #004080;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: -40%;
+    color: white;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    color: #00a3cc;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ffcc00;
+}
+
+#rates{
+    margin-top: 7%;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.main .left{
+    flex: 50%;
+}
+
+.main .left h1{
+    margin: 10% auto;
+    margin-left: 30%;
+    font-size: 80px;
+}
+
+.main .left p{
+    margin: -10% auto;
+    margin-left: 30.5%;
+    font-size: 19px;
+}
+
+.main .right{
+    flex: 50%;
+}
+
+.main .right .Img1{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin-left: 25%;
+    margin-top: 5%;
+    box-shadow: 5px black;
+}
+
+#index_about{
+    margin-top: 10%;
+}
+
+#index_about h1{
+    font-size: 35px;
+    margin: 5%;
+}
+
+#index_about p{
+    margin-left: 5.5%;
+    margin-top: -4%;
+}
+
+.feature {
+    display: flex;
+    flex-direction: row;
+}
+
+.first{
+    flex: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.first .up{
+    flex: 50%;
+}
+
+.first .up .Img2{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin-left: 15%;
+}
+
+.first .down{
+    flex: 50%;
+}
+
+.first .down .Img3{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin-left: 15%;
+}
+
+.second{
+    flex: 30%;
+}
+
+.second .Img4{
+    width: 400px;
+    height: 800px;
+    border-radius: 10px;
+    margin-left: 5%;
+}
+
+.third{
+    flex: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.third .up{
+    flex: 50%;
+}
+
+.third .up .Img5{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin-left: -4%;
+}
+
+.third .down{
+    flex: 50%;
+}
+
+.third .down .Img6{
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+    margin-left: -4%;
+}
+
+/* About Section Styling */
+#about {
+    background-color: #f0f4f7;
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#about h2 {
+    color: #004080;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#about p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#about strong {
+    color: #004080;
+    font-weight: bold;
+}
+
+#authors{
+    background-color: #f0f4f7;
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#authors h2{
+    color: #004080;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.author {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.author .box{
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.author .box:hover{
+    transform: translateY(-10px);
+}
+
+.author .box img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+}
+
+.author .box p{
+    font-size: 16px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .author {
+        grid-template-columns: 1fr; /* Stack images in one column on smaller screens */
+    }
+}
+
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        border-top: 1px solid #ffffff33;
+    }
+
+    #about {
+        padding: 30px 10px;
+    }
+
+    #about h2 {
+        font-size: 28px;
+    }
+
+    #about p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo a {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+}
+
+/* Search Bar Styling */
+.searchbox {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#bankSearch {
+    display: block;
+    padding: 16px 24px;
+    margin: 20px auto;
+    font-size: 16px;
+    border: 2px solid #004080;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#bankSearch:hover {
+    border-color: #00a3cc; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#bankSearch:focus {
+    border-color: #ffcc00;
+    outline: none; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* CSS for the Search Button */
+#searchButton {
+    display: block;
+    width: 20%;
+    padding: 16px 24px;
+    margin: 20px auto;
+    margin-left: -10%;
+    background-color: #004080;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #00a3cc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#searchButton:focus {
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* General Styles for Services Page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Services Section */
+#services {
+    background-color: #f0f4f7;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#services h2 {
+    color: #004080;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-box img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.service-box h3 a{
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.service-box h3 a:hover{
+    text-decoration: underline solid #003366;
+}
+
+.service-box p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Hover Effect */
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Styles for the Bank Search Section */
+#bank-search-section {
+    background-color: #f0f4f7;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#bank-search-section h2 {
+    color: #004080;
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Search Bar Styling */
+#bankSearch {
+    display: block;
+    width: 60%;
+    padding: 16px 24px;
+    margin: 20px auto;
+    font-size: 16px;
+    border: 2px solid #004080;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+#bankSearch:hover {
+    border-color: #00a3cc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus Effect */
+#bankSearch:focus {
+    border-color: #ffcc00;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Bank Details Styling */
+#bankDetails {
+    margin-top: 40px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bank-info {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bank-info h3 {
+    color: #004080;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.bank-info p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.bank-info p strong {
+    color: #004080;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #bankSearch {
+        width: 80%;
+    }
+
+    .bank-info {
+        padding: 20px;
+    }
+
+    .bank-info h3 {
+        font-size: 24px;
+    }
+
+    .bank-info p {
+        font-size: 16px;
+    }
+}
+
+/* Login Page Styling */
+.login-container {
+    max-width: 400px;
+    margin: 120px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #004080;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #004080;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #003366;
+}
+
+.google-login {
+    margin-top: 20px;
+}
+
+.btn-google {
+    width: 100%;
+    padding: 12px;
+    background-color: #db4437;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background-color: #c23321;
+}
+
+.signup-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.signup-text a {
+    color: #004080;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Signup Page Styling */
+.signup-container {
+    max-width: 400px;
+    margin: 120px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signup-container h2 {
+    color: #004080;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #004080;
+}
+
+.btn-signup {
+    width: 100%;
+    padding: 12px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-signup:hover {
+    background-color: #003366;
+}
+
+.signup-container p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup-container p a {
+    color: #004080;
+    text-decoration: none;
+}
+
+.signup-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Home Button Styling */
+.btn-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #004080;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-home:hover {
+    background-color: #003366;
+}
+
+/* Account Page Styling */
+.account-container {
+    max-width: 800px;
+    margin: 120px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.account-container h2 {
+    color: #004080;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+#user-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#user-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#user-info ul li {
+    background-color: #e0e7ff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#user-info ul li a {
+    text-decoration: none;
+    color: #004080;
+    font-weight: bold;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banky - Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Banky</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Services Section -->
+    <main>
+
+        <section id="bank-search-section">
+            <h2>Search Bank Details</h2>
+
+            <!-- Search Bar -->
+            <div class="searchbox">
+                <input type="text" id="bankSearch" onkeyup="searchBankDetails()" placeholder="Search for banks...">
+                <button id="searchButton" onclick="searchBankDetails()">Search</button>
+            </div>
+
+            <!-- Bank Details Display -->
+            <div id="bankDetails">
+                <!-- Bank details will be displayed here after search -->
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services-container">
+                <div class="service-box">
+                    <img src="loan-icon.png" alt="Loan Services">
+                    <h3><a href="./LoanServices.html">Loan Services</a></h3>
+                    <p>Get easy access to loans with competitive interest rates.</p>
+                </div>
+                <div class="service-box">
+                    <img src="saving-icon.png" alt="Saving Accounts">
+                    <h3><a href="./account.html">Saving Accounts</a></h3>
+                    <p>Secure savings accounts with high interest returns.</p>
+                </div>
+                <div class="service-box">
+                    <img src="investment-icon.png" alt="Investment Plans">
+                    <h3><a href="./Investment.html">Investment Plans</a></h3>
+                    <p>Plan your future with our profitable investment solutions.</p>
+                </div>
+                <div class="service-box">
+                    <img src="credit-icon.png" alt="Credit Card Services">
+                    <h3><a href="./CreditCardServices.html">Credit Card Services</a></h3>
+                    <p>Get the best deals and rewards with our credit card plans.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Banky. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
